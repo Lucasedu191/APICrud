@@ -11,7 +11,7 @@ namespace APICrud.EmployeeData {
             _employeeContext = employeeContext;
         }
         public Employee AddEmployee(Employee employee) {
-            throw new NotImplementedException();
+            
         }
 
         public void DeleteEmployee(Employee employee) {
@@ -23,7 +23,8 @@ namespace APICrud.EmployeeData {
         }
 
         public Employee GetEmployee(Guid id) {
-            throw new NotImplementedException();
+            var employee = _employeeContext.Employees.Find(id);
+            return employee;
         }
 
         public List<Employee> GetEmployees() {
