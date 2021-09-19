@@ -8,9 +8,21 @@ namespace APICrud.EmployeeData
 {
     public class MockEmployeeData : IEmployeeData
     {
-        public Employee AddEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
+        private List<Employee> employees = new List<Employee>() {
+            new Employee() {
+                Id = Guid.NewGuid(),
+                Name = "Employee One"
+            },
+            new Employee() {
+                Id = Guid.NewGuid(),
+                Name = "Employee Two"
+            }
+        };
+
+        public Employee AddEmployee(Employee employee){
+            employee.Id = Guid.NewGuid();
+            employees.Add(employee);
+            return employee;
         }
 
         public void DeleteEmployee(Employee employee)
@@ -25,12 +37,12 @@ namespace APICrud.EmployeeData
 
         public Employee GetEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            return employees.SingleOrDefault(x => x.Id == id);
         }
 
         public List<Employee> GetEmployees()
         {
-            throw new NotImplementedException();
+            return employees;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace APICrud.EmployeeData
 {
-    interface IEmployeeData
+    public interface IEmployeeData
     {
         List<Employee> GetEmployees();
 
