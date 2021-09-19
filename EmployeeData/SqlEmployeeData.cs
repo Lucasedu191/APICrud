@@ -1,4 +1,5 @@
 ﻿using APICrud.Models;
+using APICrud.EmployeeData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace APICrud.EmployeeData {
 
         public Employee EditEmployee(Employee employee) {
             var existingEmployee = _employeeContext.Employees.Find(employee.Id);
-            if(existingEmployee != null) {
+            if(existingEmployee != null) 
+            {
+                existingEmployee.Name = employee.Name;
                 _employeeContext.Employees.Update(employee);
                 _employeeContext.SaveChanges();
             }

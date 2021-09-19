@@ -56,7 +56,7 @@ namespace APICrud.Controllers
             var existingEmployee = _employeeData.GetEmployee(id);
             if (existingEmployee != null) {
                 employee.Id = existingEmployee.Id;
-                _employeeData.DeleteEmployee(employee);    
+                _employeeData.EditEmployee(employee);    
             }
 
             return Ok(employee);
