@@ -25,12 +25,13 @@ namespace APICrud.EmployeeData {
 
         public Employee EditEmployee(Employee employee) {
             var existingEmployee = _employeeContext.Employees.Find(employee.Id);
-            if(existingEmployee != null) 
-            {
+
+            if (existingEmployee != null) {
                 existingEmployee.Name = employee.Name;
-                _employeeContext.Employees.Update(employee);
+                _employeeContext.Employees.Update(existingEmployee);
                 _employeeContext.SaveChanges();
             }
+
             return employee;
         }
 
