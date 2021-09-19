@@ -1,9 +1,12 @@
 using APICrud.EmployeeData;
+using APICrud.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 
 namespace APICrud
@@ -21,8 +24,12 @@ namespace APICrud
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //Injeção de depencia do Banco de Dados
+            services.AddDbContextPool<EmployeeContext>(options => options.UseSqlServer(
+                Configuration.GetConnectionString("EmployeeContextConnectionString")));
 
-            services.AddSingleton<IEmployeeData, MockEmployeeData>();
+
+            services.AddScoped<IEmployeeData, SqlEmployeeData>();
 
         }
 
